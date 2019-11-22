@@ -18,13 +18,15 @@ body{
 #status-bar{
     grid-area: sb;
     display: grid;
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(4,1fr);
     border-style: solid;
     border-color: black;
     margin-bottom: 5px;
     border-radius: 7px;
     box-shadow: 5px 5px 5px gray;
     align-items: center;
+    background-image: linear-gradient(to bottom right, #554640, #F4D35E, white);
+    color:#554640;
     
 }
 #board{
@@ -35,6 +37,7 @@ body{
     box-shadow: 5px 5px 5px gray;
     border-style: solid ;
     border-color: black;
+    background-color: #87919E;
 }
 
 .row{
@@ -42,18 +45,35 @@ body{
     grid-template-columns: repeat(10, 1fr);
 }
 
+@keyframes gradientBG {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
 .coin{
     display: grid;
     align-self: center;
     justify-self: center;
-    height: 15px;
-    width: 15px;
-    background-color: gold;
+    height: 20px;
+    width: 20px;
+    background-size: 200%;
+    background-image: linear-gradient(to bottom right, #554640, #F4D35E, white);
     border-radius: 50%;
+    box-shadow: 2px 2px 2px #554640;
+    animation: gradientBG 3s ease infinite;
+    
 }
 
 .wall{
-    background-color: hotpink;
+    background-color: #554640;
+
 }
 
 i{
@@ -61,24 +81,64 @@ i{
     align-self: center;
     justify-self: center;
     font-size: 2.5em;
+    background: #CDE6F5;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: white;
+    border-radius: 50%;
 }
  input{
      width: fit-content;
      height: fit-content;
      margin-left: 5px;
-     border-radius: 2px;
+     border-radius: 3px;
+     padding: 3px;
+     font-family: 'Kalam', cursive;
+     box-shadow: 3px 3px 3px #554640;
  }
  button{
      width: fit-content;
      height: fit-content;
      border-radius: 2px;
+     background-color: #554640;
+     color: white;
+     font-family: 'Kalam', cursive;
  }
 
  #shuffle{
+    display: grid;
+    justify-self: center;
     border-radius: 2px;
-    background-color: hotpink;
+    background-color: #554640;
     width: fit-content;
     padding: 5px;
     color: white;
     box-shadow: 5px 5px 5px gray;
  }
+
+ .players{
+     display:grid;
+     grid-template-rows: repeat(2,1fr);
+     align-self: flex-start;
+     padding: 5px;
+     color: white;
+ }
+
+ #coins-left{
+     display: grid;
+ }
+
+ #number-of-coins{
+    display: grid;
+    justify-self: center;
+ }
+
+ .titles{
+    font-size: 20px;
+    font-family: 'Calistoga', cursive;
+ }
+
+ .scores{
+    font-family: 'Source Code Pro', monospace;
+ }
+

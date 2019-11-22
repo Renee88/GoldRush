@@ -165,7 +165,9 @@ class GoldRush extends Matrix {
 
     _score(player) {
         let playerNum =player.slice(-1)
-        this['score' + playerNum] += 10
+        let score = "score" + playerNum
+        this[score] += 10
+        console.log(this[score])
     }
 
 }
