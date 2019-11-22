@@ -1,0 +1,84 @@
+:root{
+    --gameHeight: 97vh;
+}
+body{
+    margin: 0;
+    height: 97vh;
+}
+
+#game-container{
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    grid-template-areas: "sb"
+                         "b";
+    height: var(--gameHeight);
+    margin: 10px;
+}
+
+#status-bar{
+    grid-area: sb;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 5px;
+    border-radius: 7px;
+    box-shadow: 5px 5px 5px gray;
+    align-items: center;
+    
+}
+#board{
+    grid-area: b;
+    display: grid;
+    grid-template-rows: repeat(10,1fr);
+    border-radius: 7px;
+    box-shadow: 5px 5px 5px gray;
+    border-style: solid ;
+    border-color: black;
+}
+
+.row{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+.coin{
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    height: 15px;
+    width: 15px;
+    background-color: gold;
+    border-radius: 50%;
+}
+
+.wall{
+    background-color: hotpink;
+}
+
+i{
+    display: grid;
+    align-self: center;
+    justify-self: center;
+    font-size: 2.5em;
+}
+ input{
+     width: fit-content;
+     height: fit-content;
+     margin-left: 5px;
+     border-radius: 2px;
+ }
+ button{
+     width: fit-content;
+     height: fit-content;
+     border-radius: 2px;
+ }
+
+ #shuffle{
+    border-radius: 2px;
+    background-color: hotpink;
+    width: fit-content;
+    padding: 5px;
+    color: white;
+    box-shadow: 5px 5px 5px gray;
+ }
