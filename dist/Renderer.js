@@ -6,4 +6,11 @@ class Renderer{
         let boardHTML = boardTemplate({ board })
         $("#board").append(boardHTML)
     }
+
+    renderMatrixSize(size){
+        let source = $("#matrix-size-template").html()
+        let matrixSizeTemplate = Handlebars.compile(source)
+        let matrixSizeHTML = matrixSizeTemplate({ size })
+        $("#status-bar").append(matrixSizeHTML)
+    }
 }

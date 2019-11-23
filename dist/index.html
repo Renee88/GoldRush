@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,20 +10,23 @@
     <script src="https://kit.fontawesome.com/0c25c19dc4.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Calistoga|Kalam|Source+Code+Pro&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <div id = "game-container">
-        
-        <div id = "status-bar">
-                <input id = "player1-name" type = "text" placeholder="Type player 2 Name">
-                <input id = "player2-name" type = "text" placeholder="Type player 1 Name"> 
-                <button id = "start" >Let's play</button>
+    <div id="game-container">
+
+        <div id="status-bar">
+            <input id="player1-name" type="text" placeholder="Type player 2 Name">
+            <input id="player2-name" type="text" placeholder="Type player 1 Name">
+            <button id="start">Let's play</button>
+            
         </div>
 
-        <div id = "board"></div>
-    </div>
-    
 
-        <script id = "board-template" type="text/x-handlebars-template">
+        <div id="board"></div>
+    </div>
+
+
+    <script id="board-template" type="text/x-handlebars-template">
             {{#each board as |item|}}
             <div class = "row">
                 {{#each item as |square|}}
@@ -53,12 +57,22 @@
             {{/each}}
         </script>
 
-    <script src = "handlebars/dist/handlebars.min.js"></script>
-    <script src = "jquery/dist/jquery.min.js"></script>
-    <script src = "Matrix.js"></script>
-    <script src = "GoldRush.js"></script>
-    <script src = "Renderer.js"></script>
-    <script src = "main.js"></script>
+        <script id="matrix-size-template" type="text/x-handlebars-template">
+            <select id = "matrix-size">
+                {{#each size}}
+                <option id="5">{{this}}</option>
+                {{/each}}
+            </select>
+        </script>
+
+    <script src="handlebars/dist/handlebars.min.js"></script>
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script src="Matrix.js"></script>
+    <script src="Stack.js"></script>
+    <script src="GoldRush.js"></script>
+    <script src="Renderer.js"></script>
+    <script src="main.js"></script>
 
 </body>
+
 </html>

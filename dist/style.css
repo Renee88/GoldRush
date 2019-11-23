@@ -1,5 +1,6 @@
 :root{
     --gameHeight: 97vh;
+    --colNum: 10
 }
 body{
     margin: 0;
@@ -18,7 +19,7 @@ body{
 #status-bar{
     grid-area: sb;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(5,1fr);
     border-style: solid;
     border-color: black;
     margin-bottom: 5px;
@@ -32,7 +33,7 @@ body{
 #board{
     grid-area: b;
     display: grid;
-    grid-template-rows: repeat(10,1fr);
+    grid-template-rows: repeat(var(--colNum),1fr);
     border-radius: 7px;
     box-shadow: 5px 5px 5px gray;
     border-style: solid ;
@@ -42,7 +43,7 @@ body{
 
 .row{
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
+    grid-template-columns: repeat(var(--colNum), 1fr);
 }
 
 @keyframes gradientBG {
@@ -114,6 +115,14 @@ i{
     padding: 5px;
     color: white;
     box-shadow: 5px 5px 5px gray;
+    font-family: 'Calistoga', cursive;
+ }
+
+ #shuffle:hover{
+     cursor: pointer;
+     background-image: linear-gradient(to bottom right, #554640, #F4D35E,#87919E);
+     box-shadow: 5px 5px 5px black;
+     color: #554640;
  }
 
  .players{
@@ -142,3 +151,9 @@ i{
     font-family: 'Source Code Pro', monospace;
  }
 
+ #matrix-size{
+     display: grid;
+     justify-self: center;
+     width: fit-content;
+    font-family: 'Source Code Pro', monospace;
+ }
