@@ -4,7 +4,7 @@ let board
 let game
 let player1 = "player1"
 let player2 = "player2"
-let size = [5 ,6 , 7, 8, 9, 10]
+let size = ["Select Maze Size", 5 ,6 , 7, 8, 9, 10]
 
 
 

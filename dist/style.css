@@ -68,6 +68,9 @@ body{
     background-image: linear-gradient(to bottom right, #554640, #F4D35E, white);
     border-radius: 50%;
     box-shadow: 2px 2px 2px #554640;
+    color: #554640;
+    font-weight: bold;
+    text-align: center;
     animation: gradientBG 3s ease infinite;
     
 }

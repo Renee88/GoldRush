@@ -1,4 +1,4 @@
-let stack = new Stack()
+let node = new Node()
 
 class GoldRush extends Matrix {
     constructor(rows, cols) {
@@ -7,88 +7,44 @@ class GoldRush extends Matrix {
         this.score2 = 0
     }
 
+
     loadBoard() {
         if (this.rows === 0 && this.cols === 0) {
             return
         }
         this.matrix = []
-        let elements = ["coin", "wall", "."]
+        let elements = ["coin", ".", "wall"]
         for (let i = 0; i < this.rows; i++) {
             this.matrix.push([])
             for (let j = 0; j < this.cols; j++) {
-                let randIndex = Math.floor(Math.random() * 3)
-                let randElement = elements[randIndex]
-                this.matrix[i].push(randElement)
+                if (i % 2 !== 0) {
+                    let randIndex = Math.floor(Math.random() * 2)
+                    let randElement = elements[randIndex]
+                    this.matrix[i].push(randElement)
+                } else if (i % 2 === 0) {
+                    let wallIndex = 2
+                    let wall = elements[wallIndex]
+                    this.matrix[i].push(wall)
+
+                }
+
             }
+
+            let rand = Math.ceil(Math.random() * 2)
+            for (let k = 1; k < this.cols; k = k + rand) {
+                rand++
+                let randIndex = Math.floor(Math.random() * 2)
+                let randElement = elements[randIndex]
+                this.matrix[i][k] = randElement
+            }
+
         }
+
         let lastRowIndex = this.rows - 1
         let lastColIndex = this.cols - 1
         this.matrix[0][0] = "player1"
         this.matrix[lastRowIndex][lastColIndex] = "player2"
 
-        let c = 0
-        let r = 0
-
-        for (let r in this.matrix) {
-            for (let c in this.matrix[r]) {
-                if (this.matrix[r][c] === "coin" || this.matrix[r][c] === "player1" || this.matrix[r][c] === "player2" || this.matrix[r][c] === ".") {
-                    let nextCol = parseInt(c) + 1
-                    let prevCol = parseInt(c) - 1
-                    let nextRow = parseInt(r) + 1
-                    let prevRow = parseInt(r) - 1
-                    console.log(this.matrix[r][c])
-                    //Down corners and margin
-                    if (!this.matrix[nextRow]) {
-                        //Right Down Corner
-                        if (this.matrix[r][prevCol] === "wall" && !this.matrix[r][nextCol] && this.matrix[prevRow][c] === "wall") {
-                            this.loadBoard()
-                            //Left Down corner
-                        } else if (!this.matrix[nextRow] && !this.matrix[r][prevCol] && this.matrix[r][nextCol] === "wall" && this.matrix[prevRow][c] === "wall") {
-                            this.loadBoard()
-                            //Down margin
-                        } else if (this.matrix[r][prevCol] === "wall" && this.matrix[r][nextCol] === "wall" && this.matrix[prevRow][c] === "wall") {
-                            this.loadBoard()
-                        }
-                    }
-
-                    // Up corners and margin
-                    if (!this.matrix[prevRow]) {
-                        // Right Up Corner
-                        if (this.matrix[nextRow][c] === "wall" && this.matrix[r][prevCol] === "wall" && !this.matrix[r][nextCol]) {
-                            this.loadBoard()
-                            //Left Up Corner
-                        } else if (this.matrix[nextRow][c] === "wall" && !this.matrix[r][prevCol] && this.matrix[r][nextCol] === "wall") {
-                            this.loadBoard()
-                            //Up margin
-                        } else if (this.matrix[nextRow][c] === "wall" && this.matrix[r][prevCol] === "wall" && this.matrix[r][nextCol] === "wall") {
-                            this.loadBoard()
-                        }
-                    }
-
-
-                    if (this.matrix[nextRow] && this.matrix[prevRow]) {
-
-                        //Left margin
-                        if (this.matrix[nextRow][c] === "wall" && !this.matrix[r][prevCol] && this.matrix[r][nextCol] === "wall" && this.matrix[prevRow][c] === "wall") {
-                            this.loadBoard()
-                        }
-
-                        //Right margin
-                        if (this.matrix[nextRow][c] === "wall" && this.matrix[r][prevCol] === "wall" && !this.matrix[r][nextCol] && this.matrix[prevRow][c] === "wall") {
-                            this.loadBoard()
-                        }
-
-                        //Middle of board
-                        if (this.matrix[nextRow][c] === "wall" && this.matrix[r][prevCol] === "wall" && this.matrix[r][nextCol] === "wall" && this.matrix[prevRow][c] === "wall") {
-                            this.loadBoard()
-                        }
-
-                    }
-
-
-                }
-            }
-        }
         return this.matrix
     }
 
@@ -96,14 +52,14 @@ class GoldRush extends Matrix {
     _moveDown(currRow, currCol, player) {
         let otherPlayer
         currRow++
-        if(player === "player1"){
+        if (player === "player1") {
             otherPlayer = "player2"
-        } else if(player === "player2"){
+        } else if (player === "player2") {
             otherPlayer = "player1"
         }
         if (!this.matrix[currRow]) {
             return
-        } else if (this.matrix[currRow][currCol] != "wall" && this.matrix[currRow][currCol] != otherPlayer ) {
+        } else if (this.matrix[currRow][currCol] != "wall" && this.matrix[currRow][currCol] != otherPlayer) {
             if (this.matrix[currRow][currCol] === "coin") {
                 this._score(player)
             }
@@ -118,10 +74,10 @@ class GoldRush extends Matrix {
 
     _moveUp(currRow, currCol, player) {
         let otherPlayer
-        if(player === "player1"){
-             otherPlayer = "player2"
-        } else if(player === "player2"){
-             otherPlayer = "player1"
+        if (player === "player1") {
+            otherPlayer = "player2"
+        } else if (player === "player2") {
+            otherPlayer = "player1"
         }
 
         currRow--
@@ -141,9 +97,9 @@ class GoldRush extends Matrix {
 
     _moveRight(currRow, currCol, player) {
         let otherPlayer
-        if(player === "player1"){
+        if (player === "player1") {
             otherPlayer = "player2"
-        } else if(player === "player2"){
+        } else if (player === "player2") {
             otherPlayer = "player1"
         }
 
@@ -163,9 +119,9 @@ class GoldRush extends Matrix {
 
     _moveLeft(currRow, currCol, player) {
         let otherPlayer
-        if(player === "player1"){
+        if (player === "player1") {
             otherPlayer = "player2"
-        } else if(player === "player2"){
+        } else if (player === "player2") {
             otherPlayer = "player1"
         }
 
