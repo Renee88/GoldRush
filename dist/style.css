@@ -160,3 +160,41 @@ i{
      width: fit-content;
     font-family: 'Source Code Pro', monospace;
  }
+
+ #congratulations{
+     position: absolute;
+     display: grid;
+     align-content: center;
+     justify-items: center;
+     z-index: 1;
+    width: 300px;
+    height: 300px;
+    left: calc(50vw - 150px);
+    top: calc(50vh - 150px);
+    border-radius: 10px;
+    font-size: 23px;
+    box-shadow: 5px 5px 5px #554640 ;
+    font-family: 'Calistoga', cursive;
+    background-image:linear-gradient(to bottom right, #F4D35E,#87919E, white);
+    
+ }
+
+ #start-again{
+    border-radius: 3px;
+    background-color: #554640;
+    padding: 7px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Kalam', cursive;
+    box-shadow: 3px 3px 3px white;
+    margin-top: 20px;
+ }
+
+ #start-again:hover{
+    cursor: pointer;
+    background-image: linear-gradient(to bottom right, #554640, #F4D35E,#87919E);
+    box-shadow: 5px 5px 5px black;
+    color: #554640;
+}
+

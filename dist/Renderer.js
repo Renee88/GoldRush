@@ -13,4 +13,19 @@ class Renderer{
         let matrixSizeHTML = matrixSizeTemplate({ size })
         $("#status-bar").append(matrixSizeHTML)
     }
+
+    renderStatusBar(goldRush){
+        $("#player1-score").empty()
+        $("#player2-score").empty()
+        $("#player1-score").append(goldRush.score1)
+        $("#player2-score").append(goldRush.score2)
+        let coinsNum = $(".coin").length
+        $("#number-of-coins").empty()
+        $("#number-of-coins").append(coinsNum)
+    }
+
+    renderWin(player){
+        $("#board").append(`<div id="congratulations"><div id = "first-line">Congrtulations, ${player}!</div> <div id = "second-line"> you have won!</div> </div>`)
+        $("#congratulations").append(`<div id = "start-again">Start again</div>`)
+    }
 }
