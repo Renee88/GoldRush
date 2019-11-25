@@ -10,7 +10,6 @@ class GoldRush extends Matrix {
 
     loadBoard() {
         if (this.rows === 0 && this.cols === 0) {
-            this.matrix = []
             return
         }
         this.matrix = []
@@ -49,17 +48,15 @@ class GoldRush extends Matrix {
 
         }
 
-        let lastRowIndex = this.rows - 1
-        let lastColIndex = this.cols - 1
-        this.matrix[0][0] = "player1"
-        this.matrix[lastRowIndex][lastColIndex] = "player2"
-        this.coins = coins
-
-        if (coins < 10) {
-            return this.loadBoard()
-        } else {
+        if(this.matrix[0]){
+            let lastRowIndex = this.rows - 1
+            let lastColIndex = this.cols - 1
+            this.matrix[0][0] = "player1"
+            this.matrix[lastRowIndex][lastColIndex] = "player2"
+            this.coins = coins
             return this.matrix
         }
+
     }
 
     _checkWin(player) {
@@ -207,5 +204,3 @@ class GoldRush extends Matrix {
     }
 
 }
-
-

@@ -25,7 +25,7 @@ class Renderer{
     }
 
     renderWin(player){
-        $("#board").append(`<div id="congratulations"><div id = "first-line">Congrtulations, ${player}!</div> <div id = "second-line"> you have won!</div> </div>`)
-        $("#congratulations").append(`<div id = "start-again">Start again</div>`)
+        $("#board").empty()
+        $("#board").append(`<div id="congratulations"><div id = "first-line">Congrtulations, ${player}!</div> <div id = "second-line"> you have won!</div> <div id = "start-again">Start again</div> </div>`)
     }
 }

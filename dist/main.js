@@ -1,7 +1,6 @@
 let renderer = new Renderer()
 let goldRush = new GoldRush(0, 0)
 let board
-let game
 let player1 = "player1"
 let player2 = "player2"
 let size = ["Select Maze Size", 5, 6, 7, 8, 9, 10]
@@ -49,6 +48,7 @@ $("#start").on("click", function () {
 })
 
 $("#status-bar").on("click", "#shuffle", function () {
+    $("#board").empty()
     let board = goldRush.loadBoard()
     renderer.renderStatusBar(goldRush)
     renderer.renderBoard(board)
@@ -56,7 +56,11 @@ $("#status-bar").on("click", "#shuffle", function () {
 })
 
 $("body").keydown(function (event) {
-    
+    console.log(event.which)
+    if(goldRush.win !== ""){
+        return
+    }
+
     if (event.which === 87) {
         let direction = "up"
         goldRush.movePlayer(player1, direction)
@@ -109,7 +113,7 @@ $("body").keydown(function (event) {
 
     } else {
         $("#board").empty()
-        game = goldRush.matrix
+        let game = goldRush.matrix
         renderer.renderBoard(game)
         renderer.renderStatusBar(goldRush)
 
