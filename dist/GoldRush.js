@@ -25,7 +25,7 @@ class GoldRush extends Matrix {
                     if (randElement === "coin") {
                         coins++
                     }
-                } else if (i % 2 === 0) {
+                } else {
                     let wallIndex = 2
                     let wall = elements[wallIndex]
                     this.matrix[i].push(wall)
@@ -45,24 +45,27 @@ class GoldRush extends Matrix {
                 }
             }
 
-
         }
 
-        if(this.matrix[0]){
             let lastRowIndex = this.rows - 1
             let lastColIndex = this.cols - 1
             this.matrix[0][0] = "player1"
             this.matrix[lastRowIndex][lastColIndex] = "player2"
             this.coins = coins
             return this.matrix
-        }
+
 
     }
 
     _checkWin(player) {
         let playerNum = player.slice(-1)
         let score = "score" + playerNum
-        if (this[score] === 100) {
+        
+        if(this.matrix.length < 8 && this[score] === 60){
+            this.win = player
+            console.log(this.win)
+            return this.win
+        } else if (this.matrix.length >= 8 && this[score] === 100) {
             this.win = player
             return this.win
         }

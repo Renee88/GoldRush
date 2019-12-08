@@ -3,7 +3,7 @@ let goldRush = new GoldRush(0, 0)
 let board
 let player1 = "player1"
 let player2 = "player2"
-let size = ["Select Maze Size", 5, 6, 7, 8, 9, 10]
+let size = ["Select Maze Size",6, 7, 8, 9, 10]
 let player1Name
 let player2Name
 
